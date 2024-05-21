@@ -20,7 +20,8 @@ builder.Services.AddSwaggerGen();
 
      builder.Services.AddMediatR(typeof(CreateToDooCommand).Assembly);
 builder.Services.AddMediatR(typeof(EditToDooCommand).Assembly);
-builder.Services.AddScoped<IToDoRepository, ToDoRepositoriy>();
+builder.Services.AddScoped(typeof(IToDoRepository<>), typeof(ToDoRepositoriy<>) );
+
 builder.Services.AddMediatR(typeof(GetToDooQuery).Assembly);
 //string connection = Configuration["ConnectionString:SqlServer"];
 

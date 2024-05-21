@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Application.ToDo.Commands
 {
-    public class CreateToDooCommand: IRequest<bool>
+    public class CreateToDooCommand : IRequest<bool>
     {
         public AddTodoDto AddTodoDto { get; set; }
         public CreateToDooCommand(AddTodoDto AddTodoDto)
@@ -20,25 +20,24 @@ namespace Application.ToDo.Commands
 
     public class CreateToDooCommandHandler : IRequestHandler<CreateToDooCommand, bool>
     {
-        private readonly IToDoRepository ToDoRepository;
+        private readonly IToDoRepository<TodoDto> ToDoRepository;
 
-        public CreateToDooCommandHandler(IToDoRepository toDoRepository)
+        public CreateToDooCommandHandler(IToDoRepository<TodoDto> toDoRepository)
         {
             ToDoRepository = toDoRepository;
         }
 
         public async Task<bool> Handle(CreateToDooCommand request, CancellationToken cancellationToken)
         {
-            var todo = new AddTodoDto 
+            var todo = new TodoDto
             {
-               /* Categores=request.AddTodoDto.Categores,*/Text=request.AddTodoDto.Text
+                Text = request.AddTodoDto.Text
             };
 
             var res = ToDoRepository.Add(todo);
 
             return await res;
 
-        //    throw new NotImplementedException();
         }
     }
 }

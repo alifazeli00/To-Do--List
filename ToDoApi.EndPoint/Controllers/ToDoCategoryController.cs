@@ -10,10 +10,7 @@ namespace ToDoApi.EndPoint.Controllers
         [HttpPost]
         public IActionResult Post(int ToDoId,int CategoryId)
         {
-            //Set todo for category
-
             return Ok();    
-
         }
 
     }

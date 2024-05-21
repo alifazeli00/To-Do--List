@@ -10,8 +10,8 @@ namespace Domain
     {
         public int Id { get; set; } 
         public string Text { get; set; }
-        public DateTime InsertTime { get; set; }
-        public bool IsDeleted { get; set; }
+        public DateTime createDate { get; set; }
+        public bool Remove { get; set; }
         public ICollection<Category> Category { get; set; }
     }
 }

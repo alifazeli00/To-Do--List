@@ -8,11 +8,10 @@ using System.Threading.Tasks;
 
 namespace Application.Abstractions
 {
-    public interface IToDoRepository
+    public interface IToDoRepository<T>
     {
-       Task<List<TodoDto>> GetAll(PageDto PageDto);
-      Task<bool> Add(AddTodoDto AddTodoDto);
-    //   void Delete(int Id);
-        Task<bool> Edit(EditToDoDto editToDoDto);
+        Task<List<T>> GetAll(PageDto PageDto);
+        Task<bool> Add(T AddTodoDto);
+        Task<bool> Edit(T editToDoDto);
     }
 }

@@ -12,7 +12,7 @@ namespace Application.Dtos.Todo
         public int Id { get; set; }
         [Required]
         public string Text  { get; set; }
-        public DateTime InsertTime { get; set; }
+        public DateTime createDate { get; set; }
         public bool IsDeleted { get; set; }
     }
 }

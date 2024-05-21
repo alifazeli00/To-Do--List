@@ -9,47 +9,43 @@ namespace Application.Dtos
     public class PageDto
     {
 
-       
-            //       public int page { get; set; } = 1;
-            public int pageSize { get; set; } = 1;
-         
-            public string SearchKey { get; set; }
-         //   public SortType SortType { get; set; }
-            public int pageIndex { get; set; } = 1;
-        }
-
-
-        public enum SortType
-        {
-            /// <summary>
-            /// بدونه مرتب سازی
-            /// </summary>
-            None = 0,
-            /// <summary>
-            /// پربازدیدترین
-            /// </summary>
-            MostVisited = 1,
-            /// <summary>
-            /// پرفروش‌ترین
-            /// </summary>
-            Bestselling = 2,
-            /// <summary>
-            /// محبوب‌ترین
-            /// </summary>
-            MostPopular = 3,
-            /// <summary>
-            ///  ‌جدیدترین
-            /// </summary>
-            newest = 4,
-            /// <summary>
-            /// ارزان‌ترین
-            /// </summary>
-            cheapest = 5,
-            /// <summary>
-            /// گران‌ترین
-            /// </summary>
-            mostExpensive = 6,
-        }
-
-
+        public int pageSize { get; set; } = 1;
+        public string SearchKey { get; set; }
+        public int pageIndex { get; set; } = 1;
     }
+
+
+    public enum SortType
+    {
+        /// <summary>
+        /// بدونه مرتب سازی
+        /// </summary>
+        None = 0,
+        /// <summary>
+        /// پربازدیدترین
+        /// </summary>
+        MostVisited = 1,
+        /// <summary>
+        /// پرفروش‌ترین
+        /// </summary>
+        Bestselling = 2,
+        /// <summary>
+        /// محبوب‌ترین
+        /// </summary>
+        MostPopular = 3,
+        /// <summary>
+        ///  ‌جدیدترین
+        /// </summary>
+        newest = 4,
+        /// <summary>
+        /// ارزان‌ترین
+        /// </summary>
+        cheapest = 5,
+        /// <summary>
+        /// گران‌ترین
+        /// </summary>
+        mostExpensive = 6,
+    }
+
+
+}

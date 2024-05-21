@@ -10,21 +10,21 @@ using System.Threading.Tasks;
 
 namespace Application.ToDo.Queries
 {
-    public class GetToDooQuery:IRequest<List<TodoDto>>
+    public class GetToDooQuery : IRequest<List<TodoDto>>
     {
         public PageDto PageDto { get; set; }
         public GetToDooQuery(PageDto PageDto)
         {
 
-            this.PageDto= PageDto;
+            this.PageDto = PageDto;
         }
     }
 
     public class GetToDooQueryHandler : IRequestHandler<GetToDooQuery, List<TodoDto>>
     {
-        private readonly IToDoRepository repository;
+        private readonly IToDoRepository<TodoDto> repository;
 
-        public GetToDooQueryHandler(IToDoRepository repository)
+        public GetToDooQueryHandler(IToDoRepository<TodoDto> repository)
         {
             this.repository = repository;
         }

@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace Application.ToDo.Commands
 {
-    public class EditToDooCommand:IRequest<bool> 
+    public class EditToDooCommand : IRequest<bool>
     {
         public EditToDoDto EditToDoDto { get; set; }
         public EditToDooCommand(EditToDoDto EditToDoDto)
         {
-            this.EditToDoDto=EditToDoDto; 
+            this.EditToDoDto = EditToDoDto;
 
         }
 
@@ -22,17 +22,22 @@ namespace Application.ToDo.Commands
 
     public class EditToDooCommandHandler : IRequestHandler<EditToDooCommand, bool>
     {
-        private readonly IToDoRepository ToDoRepository;
+        private readonly IToDoRepository<TodoDto> ToDoRepository;
 
-        public EditToDooCommandHandler(IToDoRepository toDoRepository)
+        public EditToDooCommandHandler(IToDoRepository<TodoDto> toDoRepository)
         {
             ToDoRepository = toDoRepository;
         }
 
         public async Task<bool> Handle(EditToDooCommand request, CancellationToken cancellationToken)
         {
-         return await   ToDoRepository.Edit(request.EditToDoDto);
-        
+            var todo = new TodoDto
+            {
+                Text = request.EditToDoDto.Text,
+                Id = request.EditToDoDto.Id
+            };
+
+            return await ToDoRepository.Edit(todo);
         }
     }
 }

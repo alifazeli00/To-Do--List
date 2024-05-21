@@ -10,11 +10,10 @@ namespace Application.Dtos
     {
 
         public string Masseg { get; set; }
-        public  bool Statos { get; set; }   
-        // ye id bara estefade az api
-    public int Id { get; set; }
+        public bool Statos { get; set; }
+        public int Id { get; set; }
     }
- public   class  BaseDtoT<T>
+    public class BaseDtoT<T>
     {
         public IEnumerable<T> Data { get; set; }
 
@@ -24,12 +23,12 @@ namespace Application.Dtos
 
         public string Masseg { get; set; }
         public bool Statos { get; set; }
-       public  IEnumerable <T> Data { get; set; }
+        public IEnumerable<T> Data { get; set; }
 
         public int PageSize { get; set; }
 
         public long Count { get; set; }
-        public  int PageIndex { get; set; }
+        public int PageIndex { get; set; }
         public Pager Pager { get; private set; }
 
         public BaseDto(int pageIndex, int pageSize, long count)
