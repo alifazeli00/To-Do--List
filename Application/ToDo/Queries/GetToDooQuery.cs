@@ -31,7 +31,7 @@ namespace Application.ToDo.Queries
 
         public async Task<List<TodoDto>> Handle(GetToDooQuery request, CancellationToken cancellationToken)
         {
-
+         
             return await repository.GetAll(request.PageDto);
         }
     }

@@ -9,9 +9,10 @@ namespace Application.Dtos
     public class PageDto
     {
 
-        public int pageSize { get; set; } = 1;
+        public int pageSize { get; set; } = 4;
         public string SearchKey { get; set; }
         public int pageIndex { get; set; } = 1;
+        public int RowCount { get; set; }
     }
 
 

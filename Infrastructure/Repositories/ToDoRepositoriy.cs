@@ -39,11 +39,13 @@ namespace Infrastructure.Repositories
             if (todo == null)
                 throw new NotFundException(nameof(todo), editToDoDto.Id);
             todo.Text = editToDoDto.Text;
+            contex.SaveChanges();
             return true;
         }
 
         public async Task<List<TodoDto>> GetAll(PageDto PageDto)
         {
+            
             int rowCount = 0;
             var query = contex.ToDos.Select(a => new TodoDto
             {
@@ -60,6 +62,8 @@ namespace Infrastructure.Repositories
             {
                 query = query.Where(p => p.Text.Contains(PageDto.SearchKey));
             }
+            PageDto.RowCount = rowCount;
+            var sss = query.ToList();
             return query.ToList();
         }
     }
