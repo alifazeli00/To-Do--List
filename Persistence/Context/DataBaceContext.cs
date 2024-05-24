@@ -10,6 +10,7 @@ namespace Persistence.Context
 {
     public class DataBaceContext : DbContext
     {
+        //
         public DataBaceContext(DbContextOptions<DataBaceContext> options) : base(options)
         {
 
