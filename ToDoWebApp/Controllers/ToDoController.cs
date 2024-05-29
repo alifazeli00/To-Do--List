@@ -30,16 +30,40 @@ namespace ToDoWebApp.Controllers
                 PaginatedItemsDto = new PaginatedItemsDto(PageDto.pageIndex, PageDto.pageSize, PageDto.RowCount) { },
 
             };
+            ViewBag.itemsleft = model.ListToDos.Where(d => d.Done == false).Count();
             return View(model);
         }
 
         [HttpPost]
         public IActionResult Add(string Text)
         {
-
+            if (!ModelState.IsValid)
+            {
+                var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
+                return BadRequest(errors);
+                //   return View(nameof(Index));
+            }
             AddTodoDto aa = new AddTodoDto();
             aa.Text = Text;
             CreateToDooCommand x = new CreateToDooCommand(aa);
+            var res = mediator.Send(x).Result;
+            return Json(res);
+
+        }
+        //  [HttpPost]
+        public IActionResult ComplateToDo(int Id, bool Done)
+        {
+
+
+            ComplateToDooCommand x = new ComplateToDooCommand(Id, Done);
+            var res = mediator.Send(x).Result;
+            return Json(res);
+
+        }
+
+        public IActionResult DeleteToDo(int Id)
+        {
+            DeleteToDooCommand x = new DeleteToDooCommand(Id);
             var res = mediator.Send(x).Result;
             return Json(res);
 
@@ -48,7 +72,7 @@ namespace ToDoWebApp.Controllers
         public IActionResult GetAll(PageDto PageDto)
         {
             AddTodoDto aa = new AddTodoDto();
-           
+
             GetToDooQuery x = new GetToDooQuery(PageDto);
             var res = mediator.Send(x).Result;
             return View();

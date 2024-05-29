@@ -1,4 +1,7 @@
-﻿@using ToDoWebApp.Models.TodoViewModel
+﻿@{
+    Layout = null;
+}
+@using ToDoWebApp.Models.TodoViewModel
 
 
 @{
@@ -6,185 +9,110 @@
     @model ToDoViewModel
 
 }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> meow meow nigga</title>
+    <link rel="stylesheet" href="~/css/styles.css" />
+    <link rel="stylesheet" href="~/input/styles.css" />
+    <link rel="icon" type="image/x-icon" href="~/img/kooh.jpg" />
+</head>
+<body class="overflow-x-hidden">
 
-<section class="vh-100">
-    <div class="container py-5 h-100">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col">
-                <div class="card" id="list1" style="border-radius: .75rem; background-color: #eff1f2;">
-                    <div class="card-body py-4 px-4 px-md-5">
+    <!------------------------------- Image ------------------------------->
 
-                        <p class="h1 text-center mt-3 mb-4 pb-3 text-primary">
-                            <i class="fas fa-check-square me-1"></i>
-                            <u>My Todo-s</u>
-                        </p>
+    <img class="-z-10 inset-0 absolute w-[99%] h-72 object-cover rounded-3xl mt-2 ml-2 ring-1 ring-gray-400 shadow-lg select-none" src="../img/kooh.jpg" alt="">
 
-                        <div class="pb-2">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="d-flex flex-row align-items-center">
+    <!------------------------------- start project ------------------------------->
 
-                                        <input type="text" class="form-control form-control-lg" id="Text"
-                                               placeholder="Add new...">
-                                        <a data-mdb-tooltip-init title="Set due date">
-                                            <i class="fas fa-calendar-alt fa-lg me-3"></i>
+    <div class="container">
+        <div class="pt-6">
 
-                                        </a>
-                                        <div>
-                                            <button onclick="PostTodo()" type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary">Add </button>
-                                        </div>
-                                    </div>
+            <!------------------------------- Input ------------------------------->
 
-                                </div>
-                            </div>
-                        </div>
+            <form class=" relative  text-center w-2/3 mx-auto select-none" action="#">
+                <h3 class="tracking-widest text-white text-4xl font-medium text-left pb-6">TODO</h3>
+                <input id="text" class="w-full rounded-lg px-4 py-3 placeholder:text-black outline-none /// focus:placeholder:text-sm focus:placeholder:text-gray-500 focus:placeholder:tracking-widest placeholder:duration-150" type="text" placeholder="Start typing...">
+                <button onclick="PostTodo()" class="bg-purple-600 text-white py-2 px-4 rounded-lg /// absolute right-1 top-[64px]  hover:bg-purple-800 duration-150">Create</button>
+                <div id="errorMessages" class="text-red-500 mt-4" style="color:black;"></div>
+            </form>
 
-                        <hr class="my-4">
 
-                        <div class="d-flex justify-content-end align-items-center mb-4 pt-2 pb-3">
-                            <p class="small mb-0 me-2 text-muted">Filter</p>
-                            <select data-mdb-select-init>
-                                <option value="1">All</option>
-                                <option value="2">Completed</option>
-                                <option value="3">Active</option>
-                                <option value="4">Has due date</option>
-                            </select>
-                            <p class="small mb-0 ms-4 me-2 text-muted">Sort</p>
-                            <select data-mdb-select-init>
-                                <option value="1">Added date</option>
-                                <option value="2">Due date</option>
-                            </select>
-                            <a href="#!" style="color: #23af89;" data-mdb-tooltip-init title="Ascending">
-                                <i class="fas fa-sort-amount-down-alt ms-2"></i>
+            <!------------------------------- Main ------------------------------->
 
-                            </a>
-                        </div>
+            <div class="bg-white w-2/3 mx-auto rounded-xl shadow-xl mt-8 px-4 py-3 select-none">
+                <div>
+
+                    <div>
                         @if (Model != null)
                             @foreach (var x in Model.ListToDos)
                             {
-
-
-                                <ul class="list-group list-group-horizontal rounded-0 bg-transparent">
-                                    <li class="list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent">
-                                        <div class="form-check">
-                                            <input class="form-check-input me-0" type="checkbox" value="" id="flexCheckChecked1"
-                                           aria-label="..." checked />
+                                if (@x.Done == false)
+                                {
+                                    <div class="py-3 px-2 border-b-[1px] border-gray-300 flex justify-between hover:bg-pink-100 hover:rounded-xl hover:cursor-pointer">
+                                        <div class="flex items-center gap-1">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="gray" class="size-5" onclick="ChengStatus(@x.Id,true)">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14" />
+                                            </svg>
+                                            <p>@x.Text</p>
                                         </div>
-                                    </li>
-                                    <li class="list-group-item px-3 py-1 d-flex align-items-center flex-grow-1 border-0 bg-transparent">
-                                        <p class="lead fw-normal mb-0">@x.Text</p>
-                                    </li>
-                                    <li class="list-group-item px-3 py-1 d-flex align-items-center border-0 bg-transparent">
-                                        <div class="py-2 px-3 me-2 border border-warning rounded-3 d-flex align-items-center bg-body-tertiary">
-
-                                            <a asp-action="Edit" asp-controller="ToDo" asp-route-Id="@x.Id" class="text-info" data-mdb-tooltip-init title="Edit todo">
-                                                <i class="fas fa-pencil-alt me-3"></i>Edit
-                                            </a>
-                                           
-
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6" onclick="deleteToDo(@x.Id)">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                                        </svg>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="py-3 px-2 border-b-[1px] border-gray-300 flex justify-between hover:bg-pink-100 hover:rounded-xl hover:cursor-pointer">
+                                        <div class="flex items-center gap-1">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="gray" class="size-5" onclick="ChengStatus(@x.Id,false)">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                                            </svg>
+                                            <p>@x.Text</p>
                                         </div>
-                                        <div class="text-end text-muted">
-                                            <a href="#!" class="text-muted" data-mdb-tooltip-init title="Created date">
-                                                <p class="small mb-0"><i class="fas fa-info-circle me-2"></i>   @x.createDate</p>
-                                            </a>
-
-                                        </div>
-                                    </li>
-                                </ul>
-
-
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6" onclick="deleteToDo(@x.Id)">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                                        </svg>
+                                    </div>
+                                }
                             }
-
                     </div>
+
+
                 </div>
+
+                <!------------------------------- end ------------------------------->
+
+                <div class="flex justify-between items-center text-gray-500 pt-3">
+                    <a class="hover:text-purple-700 duration-300">Items left @ViewBag.itemsleft</a>
+                    <ul class="flex gap-x-6">
+                        <li><a asp-action="index" asp-controller="ToDo" asp-route-SortType="All" class="hover:text-purple-700 duration-300">All</a></li>
+                        <li><a asp-action="index" asp-controller="ToDo" asp-route-SortType="Active" class="hover:text-purple-700 duration-300">Active</a></li>
+                        <li><a asp-action="index" asp-controller="ToDo" asp-route-SortType="Completed" class="hover:text-purple-700 duration-300">Completed</a></li>
+                    </ul>
+                    <a asp-action="index" asp-controller="ToDo" asp-route-SortType="ClearCompleted" class="hover:text-purple-700 duration-300">Clear Completed</a>
+                </div>
+
+                <!------------------------------- end ------------------------------->
+
             </div>
         </div>
-    </div>                                @{
-        var prevDisabled = !Model.PaginatedItemsDto.HasPreviousPage ? "disabled" : "";
-        var nextDisabled = !Model.PaginatedItemsDto.HasNextPage ? "disabled" : "";
-    }
-
-    <div class="col-md-7">
-        <div class="dataTables_paginate paging_simple_numbers" id="html5-extension_paginate">
-            <ul class="pagination">
-
-                <li class="paginate_button page-item">
-                    <a asp-route-pageIndex="1"
-                       aria-controls="html5-extension"
-                       data-dt-idx="2" tabindex="0"
-                       class="page-link"> صفحه اول</a>
-                </li>
-
-                <li class="paginate_button page-item active">
-                    <a asp-route-pageIndex="@(Model.PageDto.pageIndex - 1)"
-                       class="btn btn-default @prevDisabled">
-                        قبلی
-                    </a>
-                </li>
-
-                @foreach (var item in Model.PaginatedItemsDto.Pager.Pages)
-                {
-                    if (item == Model.PageDto.pageIndex)
-                    {
-                        <li class="paginate_button page-item  active">
-                            <a asp-route-pageIndex="@item"
-                       aria-controls="html5-extension"
-                       data-dt-idx="2" tabindex="0"
-                       class="page-link"> @item</a>
-                        </li>
-                    }
-                    else
-                    {
-                        <li class="paginate_button page-item ">
-                            <a asp-route-pageIndex="@item"
-                       aria-controls="html5-extension"
-                       data-dt-idx="2" tabindex="0"
-                       class="page-link"> @item</a>
-                        </li>
-                    }
-
-                }
-
-                <li class="paginate_button page-item ">
-
-                    <a asp-route-pageIndex="@(Model.PageDto.pageIndex + 1)"
-                       class="btn btn-default @nextDisabled">
-                        بعدی
-                    </a>
-                </li>
-
-                <li class="paginate_button page-item">
-                    <a asp-route-pageIndex="@Model.PaginatedItemsDto.Pager.TotalPages"
-                       aria-controls="html5-extension"
-                       data-dt-idx="2" tabindex="0"
-                       class="page-link"> صفحه آخر</a>
-                </li>
-            </ul>
-        </div>
     </div>
+</body>
+</html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 
-    <script>
-        function PostTodo() {
 
-             var formData = new FormData();
-                    formData.append("Text", $("#Text").val());
-            var res=$("#Text").val();
-           $.ajax({
-                  type: 'POst',
-                  url: '@Url.Action("Add", "ToDo")',
-                     contentType: false,
-                   processData: false,
-                      cache: false,
-                        data: formData,
-                           success: function(response) {
-                           alert("shod");
+<script src="~/js/Todo.js"></script>
 
 
-                           }
 
-                });
-                         }
 
-    </script>
+
+
+
 

@@ -13,5 +13,8 @@ namespace Application.Abstractions
         Task<List<T>> GetAll(PageDto PageDto);
         Task<bool> Add(T AddTodoDto);
         Task<bool> Edit(T editToDoDto);
+        Task<bool> Delete(int Id);
+        Task<bool> Complate(int Id,bool Done);
+
     }
 }

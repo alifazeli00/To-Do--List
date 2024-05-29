@@ -9,10 +9,11 @@ namespace Application.Dtos
     public class PageDto
     {
 
-        public int pageSize { get; set; } = 4;
+        public int pageSize { get; set; } = 100;
         public string SearchKey { get; set; }
         public int pageIndex { get; set; } = 1;
         public int RowCount { get; set; }
+        public SortType SortType { get; set; }
     }
 
 
@@ -21,31 +22,17 @@ namespace Application.Dtos
         /// <summary>
         /// بدونه مرتب سازی
         /// </summary>
-        None = 0,
+        All = 0,
         /// <summary>
         /// پربازدیدترین
         /// </summary>
-        MostVisited = 1,
+        Active = 1,
         /// <summary>
         /// پرفروش‌ترین
         /// </summary>
-        Bestselling = 2,
-        /// <summary>
-        /// محبوب‌ترین
-        /// </summary>
-        MostPopular = 3,
-        /// <summary>
-        ///  ‌جدیدترین
-        /// </summary>
-        newest = 4,
-        /// <summary>
-        /// ارزان‌ترین
-        /// </summary>
-        cheapest = 5,
-        /// <summary>
-        /// گران‌ترین
-        /// </summary>
-        mostExpensive = 6,
+        Completed = 2,
+
+        ClearCompleted = 3,
     }
 
 

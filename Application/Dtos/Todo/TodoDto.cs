@@ -14,7 +14,7 @@ namespace Application.Dtos.Todo
         public string Text  { get; set; }
         public DateTime createDate { get; set; }
         public bool IsDeleted { get; set; }
-       
+       public  bool Done { get; set; }
         
     }
 }

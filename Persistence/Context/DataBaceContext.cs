@@ -10,7 +10,7 @@ namespace Persistence.Context
 {
     public class DataBaceContext : DbContext
     {
-        //
+     
         public DataBaceContext(DbContextOptions<DataBaceContext> options) : base(options)
         {
 
@@ -20,7 +20,7 @@ namespace Persistence.Context
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<ToDo>().HasQueryFilter(p => !p.Remove);
+            builder.Entity<ToDo>().HasQueryFilter(p => !p.Delete);
         }
 
 

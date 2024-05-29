@@ -1,23 +1,4 @@
-/*html {
-  font-size: 14px;
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {
-  margin-bottom: 60px;
-}
-
-*/
+﻿
 #list1 .form-control {
     border-color: transparent;
 }
@@ -29,4 +10,68 @@ body {
 
 #list1 .select-input.form-control[readonly]:not([disabled]) {
     background-color: #fbfbfb;
+}
+
+.aa {
+    Display:flex;
+    Justify-content: space-between;
+    
+}
+
+.semi-rounded-input {
+    padding: 30px 100px;
+    border: 2px solid #ccc;
+    border-top-left-radius: 25px; /* گرد کردن گوشه بالا سمت چپ */
+    border-top-right-radius: 25px; /* گرد کردن گوشه بالا سمت راست */
+    outline: none;
+    font-size: 16px;
+}
+
+
+
+.input-placeholder {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #999; /* رنگ مورد نظر برای توضیحات */
+}
+
+.form-outline {
+    position: relative;
+}
+
+.form-control {
+    padding-left: 10px;
+}
+
+.gradient-custom {
+  background: radial-gradient(50% 123.47% at 50% 50%, #00ff94 0%, #720059 100%),
+    linear-gradient(121.28deg, #669600 0%, #ff0000 100%),
+    linear-gradient(360deg, #0029ff 0%, #8fff00 100%),
+    radial-gradient(100% 164.72% at 100% 100%, #6100ff 0%, #00ff57 100%),
+    radial-gradient(100% 148.07% at 0% 0%, #fff500 0%, #51d500 100%);
+  background-blend-mode: screen, color-dodge, overlay, difference, normal;
+}
+
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.a {  
+    text-decoration: none;
+    padding: 10px;
+   
+}
+.b {
+    text-decoration: none;
+    padding: 10px;
+}
+.test {
+    justify-content: center;
+    flex-direction: row;
 }
