@@ -94,5 +94,12 @@ namespace ToDoWebApp.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public IActionResult Test()
+        {
+
+            return View();
+        }
+
+
     }
 }

@@ -2,20 +2,19 @@
     event.preventDefault();
     var url = '/Todo/Add';
     var formData = new FormData();
-    formData.append("text", $("#text").val());
+    formData.append("Text", $("#text").val());
     var res = $("#text").val();
-    alert(res);
     $.ajax({
         type: 'Post',
         url: url,
-        contentType: false,
+        contentType:false,
         processData: false,
         cache: false,
         data: formData,
         success: function (response) {
             if (response.message != null) {
                 $('#errorMessages').html('<p>' + response.message + '</p>');
-            }
+            }   
             location.reload();
         }, error: function (xhr) {
             var errors = xhr.responseJSON;

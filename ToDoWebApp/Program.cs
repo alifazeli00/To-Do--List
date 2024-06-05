@@ -6,6 +6,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Persistence.Context;
+using ToDoWebApp.Utilities;
 
 var builder = WebApplication.CreateBuilder(args);   
 
@@ -28,7 +29,7 @@ string contectionString = @"server=.; Initial Catalog=ToloList; Integrated Secur
 builder.Services.AddEntityFrameworkSqlServer().AddDbContext<DataBaceContext>(option => option.UseSqlServer(contectionString));
 
 var app = builder.Build();
-
+app.UseCustumExeption();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {

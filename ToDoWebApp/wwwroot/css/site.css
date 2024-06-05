@@ -1,77 +1,151 @@
 ﻿
-#list1 .form-control {
-    border-color: transparent;
+.container {
+    width: 100%;
 }
 
-    #list1 .form-control:focus {
-        border-color: transparent;
-        box-shadow: none;
-    }
-
-#list1 .select-input.form-control[readonly]:not([disabled]) {
-    background-color: #fbfbfb;
-}
-
-.aa {
-    Display:flex;
-    Justify-content: space-between;
-    
-}
-
-.semi-rounded-input {
-    padding: 30px 100px;
-    border: 2px solid #ccc;
-    border-top-left-radius: 25px; /* گرد کردن گوشه بالا سمت چپ */
-    border-top-right-radius: 25px; /* گرد کردن گوشه بالا سمت راست */
-    outline: none;
-    font-size: 16px;
-}
-
-
-
-.input-placeholder {
-    position: absolute;
-    top: 50%;
-    left: 10px;
-    transform: translateY(-50%);
-    pointer-events: none;
-    color: #999; /* رنگ مورد نظر برای توضیحات */
-}
-
-.form-outline {
+.forms {
     position: relative;
 }
 
-.form-control {
-    padding-left: 10px;
+.Heder {
+    position: relative;
+    width: 800px;
+    margin: 0px auto;
+    min-height: 1vh;
 }
 
-.gradient-custom {
-  background: radial-gradient(50% 123.47% at 50% 50%, #00ff94 0%, #720059 100%),
-    linear-gradient(121.28deg, #669600 0%, #ff0000 100%),
-    linear-gradient(360deg, #0029ff 0%, #8fff00 100%),
-    radial-gradient(100% 164.72% at 100% 100%, #6100ff 0%, #00ff57 100%),
-    radial-gradient(100% 148.07% at 0% 0%, #fff500 0%, #51d500 100%);
-  background-blend-mode: screen, color-dodge, overlay, difference, normal;
+ input {
+    width: 650px;
+    margin: 150px 80px;
+    padding: 20px 50px 14px 14px;
+    box-sizing: border-box;
+    border-radius: 15px;
 }
 
+button {
+    position: absolute;
+    right: 100px; /* Adjust as needed */
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background-color: blue;
+    color: white;
+    padding: 9px 30px;
+    cursor: pointer;
+    border-radius: 15px;
+}
 
-.container {
+.icon-style {
+    font-size: 24px; /* تنظیم اندازه مشابه با SVG */
+    color: gray; /* تنظیم رنگ مشابه با SVG */
+    stroke-width: 1.5;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.Heder .card {
+    border-radius: 10px;
+    border: 1px solid #ced4da;
+    margin: 0px auto;
+    position: relative; /* یا absolute یا fixed */
+    top: -120px;
+    width: 650px;
+    min-height: 20vh;
+    background-color: white;
+}
+
+.card-body {
+    width: 600px;
+}
+
+.list-group {
+    overflow: hidden;
+    max-height: 600px;
+    width: 600px;
+    padding: 0px 11px;
+}
+/*.size-5 {
+    width: 3em;
+    height: 3em;
+    vertical-align: middle;*/ /* تنظیم عمودی در خط میانی */
+/*display: inline-block;*/ /* نمایش به صورت بلاک در خط */
+/*}*/
+.size-2 {
+    margin: -5px;
+    width: 3em; /* تنظیم عرض SVG */
+    height: 1.7em; /* تنظیم ارتفاع SVG */
+    vertical-align: middle; /* تنظیم عمودی در خط میانی */
+    display: inline-block; /* نمایش به صورت بلاک در خط */
+}
+
+.list-group-item {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1px 0px;
+    border: 111px;
+    border-bottom: 1px solid rgba(0, 0, 0, .125);
+}
+
+.item-content {
+    display: flex;
+    align-items: center;
+}
+
+.list-group-item a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.list-group-item:last-child {
+    border-bottom: 0;
+}
+
+.foter {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    padding: 20px;
+    width: 620px;
 }
-.a {  
-    text-decoration: none;
-    padding: 10px;
-   
+
 }
-.b {
-    text-decoration: none;
-    padding: 10px;
+
+.flexgap {
+    display: flex;
+    list-style-type: none;
+    gap: 10px;
 }
-.test {
-    justify-content: center;
-    flex-direction: row;
+
+.foter ul {
+    display: flex;
+    list-style-type: none;
+    gap: 10px; /* تنظیم فاصله بین آیتم‌ها */
+}
+
+.footer ul li {
+    color: white; /* تنظیم رنگ متن */
+    padding: 0 10px; /* اضافه کردن پدینگ به آیتم‌ها */
+}
+
+
+.custom-img {
+    z-index: -10;
+    position: absolute;
+    inset: 0; /* shorthand for top, right, bottom, left set to 0 */
+    width: 99%;
+    height: 18rem; /* 72 * 4 (since 1rem = 16px) */
+    object-fit: cover;
+    border-radius: 1.5rem; /* 3 * 0.5rem */
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+    border: 1px solid #a3a3a3; /* ring-gray-400 */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+    user-select: none; /* select-none */
 }
