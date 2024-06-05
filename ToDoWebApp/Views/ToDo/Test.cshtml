@@ -17,12 +17,11 @@
 <body>
     <img class="custom-img" src="~/img/kooh.jpg" alt="">
     <div class="container">
-
         <div class="Heder">
             <div class="forms">
                 <form>
-                    <input class="s" type="text" placeholder="Type something..." />
-                    <button class="b">ss</button>
+                    <input type="text" placeholder="Type something..." />
+                    <button  >ss</button>
                 </form>
             </div>
             <div class="card">
@@ -75,13 +74,13 @@
                         </li>
                     </ul>
                     <div class="foter">
-                        <a href="" class="aa">Items left @ViewBag.itemsleft</a>
+                        <a href=""  >Items left @ViewBag.itemsleft</a>
                         <ul class="flexgap">
-                            <li><a asp-action="index" asp-controller="ToDo" asp-route-SortType="All" class="aa">All</a></li>
-                            <li><a asp-action="index" asp-controller="ToDo" asp-route-SortType="Active" class="aa">Active</a></li>
-                            <li><a asp-action="index" asp-controller="ToDo" asp-route-SortType="Completed" class="aa">Completed</a></li>
+                            <li><a asp-action="index" asp-controller="ToDo" asp-route-SortType="All">All</a></li>
+                            <li><a asp-action="index" asp-controller="ToDo" asp-route-SortType="Active">Active</a></li>
+                            <li><a asp-action="index" asp-controller="ToDo" asp-route-SortType="Completed">Completed</a></li>
                         </ul>
-                        <a asp-action="index" asp-controller="ToDo" asp-route-SortType="ClearCompleted" class="aa">Clear Completed</a>
+                        <a asp-action="index" asp-controller="ToDo" asp-route-SortType="ClearCompleted" >Clear Completed</a>
                     </div>
                 </div>
             </div>
